@@ -1,9 +1,71 @@
 # HARMONY: Hierarchical Adaptive Retrieval with Memory Optimization for Neural Systems
 
-[![arXiv](https://img.shields.io/badge/arXiv-2401.XXXXX-b31b1b.svg)](https://arxiv.org/abs/2401.XXXXX)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)](https://pytorch.org/)
+```mermaid
+flowchart TB
+    subgraph Input[Input Layer]
+        I[Input Sequence]
+    end
+
+    subgraph Memory[Memory Hierarchy]
+        direction TB
+        subgraph STM[Short-Term Memory]
+            direction LR
+            STB[High Resolution Buffer]
+            QKV[Q/K/V Cache]
+        end
+
+        subgraph MTM[Medium-Term Memory]
+            direction LR
+            LSH[LSH Index]
+            CS[Compressed Storage]
+            AP[Adaptive Policy]
+        end
+
+        subgraph LTM[Long-Term Memory]
+            direction LR
+            PS[Persistent Storage]
+            DI[Disk Index]
+        end
+    end
+
+    subgraph Processing[Processing System]
+        direction TB
+        PA[Probabilistic Addressing]
+        AC[Adaptive Compression]
+        subgraph Attention[Attention Mechanism]
+            direction LR
+            MHA[Multi-Head Attention]
+            PR[Parallel Retrieval]
+        end
+    end
+
+    I --> STM
+    STM --> MTM
+    MTM --> LTM
+    
+    STM --> PA
+    MTM --> PA
+    LTM --> PA
+    
+    PA --> Attention
+    AC --> MTM
+    
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef memory fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef processing fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+    classDef input fill:#f1f8e9,stroke:#558b2f,stroke-width:2px;
+    
+    class STM,MTM,LTM memory;
+    class PA,AC,Attention processing;
+    class Input input;
+```
+
+<p align="center">
+    <a href="https://arxiv.org/abs/2401.XXXXX"><img src="https://img.shields.io/badge/arXiv-2401.XXXXX-b31b1b.svg" alt="arXiv"></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+    <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="Python 3.9+"></a>
+    <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.0%2B-orange" alt="PyTorch"></a>
+</p>
 
 ## Abstract
 
